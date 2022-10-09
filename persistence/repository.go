@@ -7,8 +7,7 @@ import (
 	"github.com/peace-habib-exchange/backend/domain"
 )
 
-func (d *Repository) CreateUser(ctx context.Context, user domain.User) (*domain.User, error) {
-	fmt.Println("I got here now")
+func (d *PeaceRepository) CreateUser(ctx context.Context, user domain.User) (*domain.User, error) {
 	_, err := d.DB.Collection("users").InsertOne(ctx, &user)
 	if err != nil {
 		fmt.Println(err)

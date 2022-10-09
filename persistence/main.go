@@ -10,7 +10,7 @@ import (
 	"go.mongodb.org/mongo-driver/x/bsonx"
 )
 
-type Repository struct {
+type PeaceRepository struct {
 	DB *mongo.Database
 }
 
@@ -29,12 +29,12 @@ func DatabaseConnection(connectionURL string) (*mongo.Client, error) {
 	return client, err
 }
 
-func (d *Repository) NewDatabase(client *mongo.Client, databaseName string) *Repository {
+func (d *PeaceRepository) NewDatabase(client *mongo.Client, databaseName string) *PeaceRepository {
 	db := client.Database(databaseName)
-	return &Repository{DB: db}
+	return &PeaceRepository{DB: db}
 }
 
-func (d *Repository) CreateIndex(ctx context.Context) error {
+func (d *PeaceRepository) CreateIndex(ctx context.Context) error {
 	indexOpts := options.CreateIndexes().SetMaxTime(time.Second * 10)
 	userIndexModel := mongo.IndexModel{
 		Options: options.Index().SetBackground(true),

@@ -2,6 +2,6 @@ package domain
 
 import "context"
 
-type Repository interface {
+type PeaceRepository interface {
 	CreateUser(ctx context.Context, user User) (*User, error)
 }

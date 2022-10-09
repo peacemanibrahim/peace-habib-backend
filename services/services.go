@@ -7,11 +7,11 @@ import (
 	"github.com/peace-habib-exchange/backend/domain"
 )
 
-type Service struct {
-	Repository domain.Repository
+type PeaceService struct {
+	PeaceRepository domain.PeaceRepository
 }
 
-func (s *Service) CreateUser(ctx context.Context, user domain.User) (*domain.User, error) {
+func (s *PeaceService) CreateUser(ctx context.Context, user domain.User) (*domain.User, error) {
 	user.CreatedAt = time.Now()
-	return s.Repository.CreateUser(ctx, user)
+	return s.PeaceRepository.CreateUser(ctx, user)
 }

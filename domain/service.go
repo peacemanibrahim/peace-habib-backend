@@ -2,6 +2,6 @@ package domain
 
 import "context"
 
-type Service interface {
+type PeaceService interface {
 	CreateUser(ctx context.Context, user User) (*User, error)
 }

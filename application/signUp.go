@@ -1,4 +1,4 @@
-package handler
+package application
 
 import (
 	"context"
@@ -9,11 +9,11 @@ import (
 	"github.com/peace-habib-exchange/backend/domain"
 )
 
-type Controller struct {
-	Service domain.Service
+type PeaceController struct {
+	PeaceService domain.PeaceService
 }
 
-func (a Controller) SignUp(w http.ResponseWriter, r *http.Request) {
+func (a PeaceController) SignUp(w http.ResponseWriter, r *http.Request) {
 	var user domain.User
 	json.NewDecoder(r.Body).Decode(&user)
 	validate := validator.New()
@@ -25,6 +25,6 @@ func (a Controller) SignUp(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	ctx := context.Background()
-	result, _ := a.Service.CreateUser(ctx, user)
+	result, _ := a.PeaceService.CreateUser(ctx, user)
 	json.NewEncoder(w).Encode(result)
 }
